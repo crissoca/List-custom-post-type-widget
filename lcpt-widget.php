@@ -54,13 +54,12 @@ class ND_lcpt_Widget extends WP_Widget {
 		register_activation_hook( __FILE__, array( $this, 'activate' ) );
 		register_deactivation_hook( __FILE__, array( $this, 'deactivate' ) );
 
-		// TODO: update description
 		parent::__construct(
 			$this->get_widget_slug(),
 			__( 'List custom post type', $this->get_widget_slug() ),
 			array(
 				'classname'  => $this->get_widget_slug().'-class',
-				'description' => __( 'Short description of the widget goes here.', $this->get_widget_slug() )
+				'description' => __( 'Your site’s most recent Posts from any custom post type.', $this->get_widget_slug() )
 			)
 		);
 
@@ -187,7 +186,6 @@ class ND_lcpt_Widget extends WP_Widget {
 	 */
 	public function widget_textdomain() {
 
-		// TODO be sure to change 'lcpt-widget' to the name of *your* plugin
 		load_plugin_textdomain( $this->get_widget_slug(), false, plugin_dir_path( __FILE__ ) . 'lang/' );
 
 	} // end widget_textdomain
@@ -248,5 +246,4 @@ class ND_lcpt_Widget extends WP_Widget {
 
 } // end class
 
-// TODO: Remember to change 'Widget_Name' to match the class name definition
-add_action( 'widgets_init', create_function( '', 'register_widget("Widget_Name");' ) );
+add_action( 'widgets_init', create_function( '', 'register_widget("ND_lcpt_Widget");' ) );
